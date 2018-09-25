@@ -1,6 +1,7 @@
 import React from 'react';
 import {AppBar,Toolbar,Typography,IconButton,
-	Drawer,List,ListItem,ListItemText,ListItemIcon} from '@material-ui/core';
+	Drawer,List,ListItem,ListItemText,ListItemIcon,
+	Button,Divider} from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import HomeIcon from '@material-ui/icons/Home';
 import CreateIcon from '@material-ui/icons/Create';
@@ -21,8 +22,8 @@ class Header extends React.Component{
 				Component: <HomeIcon />
 			},
 			{
-				item: "Create",
-				route: "/create",
+				item: "Editor",
+				route: "/editor",
 				Component: <CreateIcon/>
 			}
 		];
@@ -39,14 +40,20 @@ class Header extends React.Component{
 		})
 	}
 	render(){
+		console.log(Util.cs)
 		return(
 			<div style={{flexGrow: 1}}>
 				<AppBar position="static">
 					<Toolbar variant="dense" style={{backgroundColor:'white'}}>
-						<div style={{flexGrow:1}}>
+						<div>
 							<IconButton aria-label="Menu" onClick={this.toggleDrawer}>
 								<MenuIcon />
 							</IconButton>
+						</div>
+						<div style={{flexGrow:1,textAlign:'center'}}>
+							<Button variant="outlined" size="small" color="primary">
+					        	Small
+					        </Button>
 						</div>
 						<div>
 							<Typography variant="title" style={{color:"#C8102E"}}>
@@ -55,6 +62,7 @@ class Header extends React.Component{
 						</div>
 					</Toolbar>
 				</AppBar>
+				<Divider/>
 				<Drawer open={this.state.open} onClose={()=>this.toggleDrawer(true)}>
 					<List style={{width:250}}>
 						{this.menuItemRender()}

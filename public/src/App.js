@@ -13,7 +13,7 @@ import { fadeIn } from "animate-keyframes";
 
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
-import AppBar from './components/common/Header';
+import Header from './components/common/Header';
 
 import Landing from './components/screens/Landing';
 import EditorPage from './components/screens/EditorPage';
@@ -43,7 +43,7 @@ const routes = [
 		component: Landing
 	},
 	{
-		path: "/ed",
+		path: "/editor",
 		component: EditorPage
 	}
 ];
@@ -56,8 +56,7 @@ for(var i = 0; i < routes.length; i++){
 class App extends React.Component{
 	state = {
 		loggedIn: null,
-		userObject: null,
-
+		userObject: null
 	}
 	componentWillMount(){
 		var config = {
@@ -88,7 +87,6 @@ class App extends React.Component{
 	    Util.cs = props;
 	    Util.limbo = this.limbo;
 	    var phlp = props.history.location.pathname;
-	    console.log(Util);
 	    return(
 	    	<div>
 		        <Merge
@@ -133,8 +131,6 @@ class App extends React.Component{
 	        <Router>
 		        <MuiThemeProvider theme={muiTheme}>
 			        <div>
-			        	<AppBar/>
-			        	<Divider/>
 			        	{this.renderRoutes()}
 			        </div>
 		        </MuiThemeProvider>
